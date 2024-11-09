@@ -2,7 +2,7 @@
   New contact
 </.header>
 
-<form class="mt-10 space-y-8">
+<.form action={~p"/contacts"} method="post" class="mt-10 space-y-8">
   <div>
     <label for="contact_name" class="block text-sm font-semibold leading-6 text-zinc-800">
       Name
@@ -33,6 +33,6 @@
   >
     Save Contact
   </button>
-</form>
+</.form>
 
 <.back navigate={~p"/"}>Back to all contacts</.back>
