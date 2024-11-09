@@ -18,8 +18,16 @@ defmodule RolodexWeb.ContactController do
     render(conn, :new)
   end
 
-  def create(conn, params) do
-    text(conn, inspect(params))
+  def create(conn, %{"contact" => contact_params}) do
+    case Contacts.create_contact(contact_params) do
+      {:ok, contact} ->
+        conn
+        |> put_flash(:info, "Contact created successfully.")
+        |> redirect(to: ~p"/contacts/#{contact}")
+
+      {:error, _changeset} ->
+        render(conn, :new)
+    end
   end
 
   def edit(conn, %{"id" => id}) do
