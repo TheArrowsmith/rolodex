@@ -2,7 +2,7 @@
   New contact
 </.header>
 
-<.form action={~p"/contacts"} method="post" class="mt-10 space-y-8">
+<.simple_form for={%{}} action={~p"/contacts"} method="post">
   <div>
     <label for="contact_name" class="block text-sm font-semibold leading-6 text-zinc-800">
       Name
@@ -27,12 +27,11 @@
     />
   </div>
 
-  <button
-    type="submit"
-    class="rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80"
-  >
-    Save Contact
-  </button>
-</.form>
+  <:actions>
+    <.button type="submit">
+      Save Contact
+    </.button>
+  </:actions>
+</.simple_form>
 
 <.back navigate={~p"/"}>Back to all contacts</.back>
