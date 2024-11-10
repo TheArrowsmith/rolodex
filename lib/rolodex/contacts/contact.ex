@@ -21,5 +21,7 @@ defmodule Rolodex.Contacts.Contact do
     |> validate_length(:name, max: 100)
     |> validate_length(:email, max: 100)
     |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/)
+    |> unsafe_validate_unique(:email, Rolodex.Repo)
+    |> unique_constraint(:email)
   end
 end
