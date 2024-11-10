@@ -15,7 +15,8 @@ defmodule RolodexWeb.ContactController do
   end
 
   def new(conn, _params) do
-    render(conn, :new)
+    changeset = Contacts.change_contact(%Contact{})
+    render(conn, :new, changeset: changeset)
   end
 
   def create(conn, %{"contact" => contact_params}) do
@@ -25,8 +26,8 @@ defmodule RolodexWeb.ContactController do
         |> put_flash(:info, "Contact created successfully.")
         |> redirect(to: ~p"/contacts/#{contact}")
 
-      {:error, _changeset} ->
-        render(conn, :new)
+      {:error, changeset} ->
+        render(conn, :new, changeset: changeset)
     end
   end
 

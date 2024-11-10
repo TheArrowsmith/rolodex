@@ -2,28 +2,30 @@
   New contact
 </.header>
 
-<.simple_form for={%{}} action={~p"/contacts"} method="post">
+<.simple_form :let={form} for={@changeset} action={~p"/contacts"}>
   <div>
-    <label for="contact_name" class="block text-sm font-semibold leading-6 text-zinc-800">
+    <label for={form[:name].id} class="block text-sm font-semibold leading-6 text-zinc-800">
       Name
     </label>
     <input
-      id="contact_name"
+      id={form[:name].id}
       type="text"
-      name="contact[name]"
+      name={form[:name].name}
       class="mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 border-zinc-300 focus:border-zinc-400"
+      value={form[:name].value}
     />
   </div>
 
   <div>
-    <label for="contact_email" class="block text-sm font-semibold leading-6 text-zinc-800">
+    <label for={form[:email].id} class="block text-sm font-semibold leading-6 text-zinc-800">
       Email
     </label>
     <input
-      id="contact_email"
+      id={form[:email].id}
       type="email"
-      name="contact[email]"
+      name={form[:email].name}
       class="mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 border-zinc-300 focus:border-zinc-400"
+      value={form[:email].value}
     />
   </div>
 
