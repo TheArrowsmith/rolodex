@@ -33,11 +33,22 @@ defmodule RolodexWeb.ContactController do
 
   def edit(conn, %{"id" => id}) do
     contact = Contacts.get_contact!(id)
-    render(conn, :edit, contact: contact)
+    changeset = Contacts.change_contact(contact)
+    render(conn, :edit, contact: contact, changeset: changeset)
   end
 
-  def update(conn, %{"id" => _id, "contact" => contact_params}) do
-    text(conn, inspect(contact_params))
+  def update(conn, %{"id" => id, "contact" => contact_params}) do
+    contact = Contacts.get_contact!(id)
+
+    case Contacts.update_contact(contact, contact_params) do
+      {:ok, contact} ->
+        conn
+        |> put_flash(:info, "Contact updated successfully.")
+        |> redirect(to: ~p"/contacts/#{contact}")
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, :edit, contact: contact, changeset: changeset)
+    end
   end
 
   def delete(conn, %{"id" => id}) do
