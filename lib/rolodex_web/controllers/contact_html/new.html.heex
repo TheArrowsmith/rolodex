@@ -3,6 +3,10 @@
 </.header>
 
 <.simple_form :let={form} for={@changeset} action={~p"/contacts"}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+
   <div>
     <label for={form[:name].id} class="block text-sm font-semibold leading-6 text-zinc-800">
       Name
