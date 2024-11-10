@@ -2,6 +2,6 @@
   Edit Contact
 </.header>
 
-<div class="my-16">[FORM GOES HERE]</div>
+<.contact_form changeset={@changeset} action={~p"/contacts/#{@contact}"} />
 
 <.back navigate={~p"/contacts/#{@contact}"}>Back</.back>
