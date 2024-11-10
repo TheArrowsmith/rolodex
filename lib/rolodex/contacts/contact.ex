@@ -20,5 +20,6 @@ defmodule Rolodex.Contacts.Contact do
     |> validate_required([:name])
     |> validate_length(:name, max: 100)
     |> validate_length(:email, max: 100)
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/)
   end
 end
