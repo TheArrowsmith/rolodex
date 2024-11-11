@@ -9,7 +9,7 @@ defmodule Rolodex.Contacts.Contact do
     field :email, :string
     field :favorite, :boolean, default: false
     field :notes, :string
-    field :title, :string
+    field :title, Ecto.Enum, values: @titles
     field :birthday, :date
 
     timestamps(type: :utc_datetime)
