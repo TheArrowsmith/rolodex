@@ -2,6 +2,8 @@ defmodule Rolodex.Contacts.Contact do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @titles ~w[Mr Mrs Miss Ms Dr Prof Rev Capt]a
+
   schema "contacts" do
     field :name, :string
     field :email, :string
@@ -12,6 +14,8 @@ defmodule Rolodex.Contacts.Contact do
 
     timestamps(type: :utc_datetime)
   end
+
+  def titles, do: @titles
 
   @doc false
   def changeset(contact, attrs) do
