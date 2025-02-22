@@ -34,7 +34,9 @@
   <div :if={@contact.notes} class="flex items-start space-x-3">
     <.icon name="hero-pencil-square" class="h-6 w-6 text-gray-400 shrink-0" />
     <div>
-      {@contact.notes}
+      <%= for paragraph <- String.split(@contact.notes, ~r/\s*\n\s*/) do %>
+        <p class="mb-2">{paragraph}</p>
+      <% end %>
     </div>
   </div>
 </div>
