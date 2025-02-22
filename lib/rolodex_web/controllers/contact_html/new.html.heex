@@ -7,33 +7,8 @@
     Oops, something went wrong! Please check the errors below.
   </.error>
 
-  <div>
-    <label for={form[:name].id} class="block text-sm font-semibold leading-6 text-zinc-800">
-      Name
-    </label>
-    <input
-      id={form[:name].id}
-      type="text"
-      name={form[:name].name}
-      class="mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 border-zinc-300 focus:border-zinc-400"
-      value={form[:name].value}
-    />
-    <.error :for={msg <- form[:name].errors}>{translate_error(msg)}</.error>
-  </div>
-
-  <div>
-    <label for={form[:email].id} class="block text-sm font-semibold leading-6 text-zinc-800">
-      Email
-    </label>
-    <input
-      id={form[:email].id}
-      type="email"
-      name={form[:email].name}
-      class="mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 border-zinc-300 focus:border-zinc-400"
-      value={form[:email].value}
-    />
-    <.error :for={msg <- form[:email].errors}>{translate_error(msg)}</.error>
-  </div>
+  <.input field={form[:name]} type="text" label="Name" />
+  <.input field={form[:email]} type="email" label="Email" />
 
   <:actions>
     <.button type="submit">
