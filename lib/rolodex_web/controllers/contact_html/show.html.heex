@@ -1,0 +1,67 @@
+<Layouts.app flash={@flash}>
+  <div class="flex items-center space-x-4 mb-4">
+    <.contact_avatar contact={@contact} />
+    <h1 class="text-2xl font-bold">
+      <%= if @contact.title do %>
+        {@contact.title}.
+      <% end %>
+
+      {@contact.name}
+    </h1>
+    <div class="ml-auto text-gray-400">
+      <%= if @contact.favorite do %>
+        <.icon name="hero-star-solid" class="bg-orange-300 h-6 w-6" />
+      <% end %>
+    </div>
+  </div>
+
+  <h2 class="font-semibold mb-4">Contact details</h2>
+
+  <div class="space-y-4">
+    <div :if={@contact.email} class="flex items-start space-x-3">
+      <.icon name="hero-envelope" class="h-6 w-6 text-gray-400 shrink-0" />
+      <div>
+        {@contact.email}
+      </div>
+    </div>
+
+    <div :if={@contact.birthday} class="flex items-start space-x-3">
+      <.icon name="hero-cake" class="h-6 w-6 text-gray-400 shrink-0" />
+      <div>
+        {Calendar.strftime(@contact.birthday, "%m/%d/%Y")}
+      </div>
+    </div>
+
+    <div :if={@contact.notes} class="flex items-start space-x-3">
+      <.icon name="hero-pencil-square" class="h-6 w-6 text-gray-400 shrink-0" />
+      <div>
+        {@contact.notes}
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <.link href={~p"/contacts/#{@contact}/edit"} class="text-blue-400 hover:text-blue-600">
+      <.icon name="hero-pencil" class="h-4 w-4 relative bottom-px" /> Edit
+    </.link>
+    &nbsp;
+    &nbsp;
+    <.link
+      href={~p"/contacts/#{@contact}"}
+      class="text-red-400 hover:text-red-600"
+      method="delete"
+      data-confirm="Delete contact?"
+    >
+      <.icon name="hero-trash" class="h-4 w-4 relative bottom-px" /> Delete
+    </.link>
+  </div>
+
+  <div class="mt-16">
+    <.link
+      navigate={~p"/"}
+      class="text-sm font-semibold leading-6 text-zinc-900 hover:text-zinc-700"
+    >
+      <.icon name="hero-arrow-left-solid" class="h-3 w-3" /> Back to all contacts
+    </.link>
+  </div>
+</Layouts.app>

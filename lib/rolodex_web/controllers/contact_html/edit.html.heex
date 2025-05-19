@@ -1,0 +1,16 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Edit Contact
+  </.header>
+
+  <div class="my-16">[FORM GOES HERE]</div>
+
+  <div class="mt-16">
+    <.link
+      navigate={~p"/contacts/#{@contact}"}
+      class="text-sm font-semibold leading-6 text-zinc-900 hover:text-zinc-700"
+    >
+      <.icon name="hero-arrow-left-solid" class="h-3 w-3" /> Back
+    </.link>
+  </div>
+</Layouts.app>
