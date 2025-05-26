@@ -1,0 +1,12 @@
+<.form :let={form} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+
+  <.input field={form[:name]} type="text" label="Name" />
+  <.input field={form[:email]} type="email" label="Email" />
+
+  <button type="submit" class="btn btn-primary">
+    Save Contact
+  </button>
+</.form>
