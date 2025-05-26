@@ -19,6 +19,7 @@
           class="w-full input"
         />
       </label>
+      <.error :for={error <- form[:name].errors}>{translate_error(error)}</.error>
     </fieldset>
 
     <fieldset class="fieldset mb-2">
@@ -32,6 +33,7 @@
           class="w-full input"
         />
       </label>
+      <.error :for={error <- form[:email].errors}>{translate_error(error)}</.error>
     </fieldset>
 
     <button type="submit" class="btn btn-primary">
