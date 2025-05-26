@@ -3,7 +3,7 @@
     New contact
   </.header>
 
-  <form>
+  <.form action={~p"/contacts"} method="post">
     <fieldset class="fieldset mb-2">
       <label>
         <span class="label mb-1">Name</span>
@@ -21,7 +21,7 @@
     <button type="submit" class="btn btn-primary">
       Save Contact
     </button>
-  </form>
+  </.form>
 
   <div class="mt-16">
     <.link
