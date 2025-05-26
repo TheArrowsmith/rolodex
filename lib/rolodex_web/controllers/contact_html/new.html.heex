@@ -3,18 +3,30 @@
     New contact
   </.header>
 
-  <.form action={~p"/contacts"} method="post">
+  <.form :let={form} for={@changeset} action={~p"/contacts"}>
     <fieldset class="fieldset mb-2">
       <label>
         <span class="label mb-1">Name</span>
-        <input type="text" name="contact[name]" id="contact_name" class="w-full input" />
+        <input
+          type="text"
+          name={form[:name].name}
+          id={form[:name].id}
+          value={form[:name].value}
+          class="w-full input"
+        />
       </label>
     </fieldset>
 
     <fieldset class="fieldset mb-2">
       <label>
         <span class="label mb-1">Email</span>
-        <input type="email" name="contact[email]" id="contact_email" class="w-full input" />
+        <input
+          type="email"
+          name={form[:email].name}
+          id={form[:email].id}
+          value={form[:email].value}
+          class="w-full input"
+        />
       </label>
     </fieldset>
 
