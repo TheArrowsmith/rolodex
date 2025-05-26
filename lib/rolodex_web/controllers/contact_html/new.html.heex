@@ -3,7 +3,25 @@
     New contact
   </.header>
 
-  <div class="my-16">[FORM GOES HERE]</div>
+  <form>
+    <fieldset class="fieldset mb-2">
+      <label>
+        <span class="label mb-1">Name</span>
+        <input type="text" name="name" id="contact_name" class="w-full input" />
+      </label>
+    </fieldset>
+
+    <fieldset class="fieldset mb-2">
+      <label>
+        <span class="label mb-1">Email</span>
+        <input type="email" name="email" id="contact_email" class="w-full input" />
+      </label>
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">
+      Save Contact
+    </button>
+  </form>
 
   <div class="mt-16">
     <.link
