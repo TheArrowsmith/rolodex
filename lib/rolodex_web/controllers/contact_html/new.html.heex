@@ -8,33 +8,8 @@
       Oops, something went wrong! Please check the errors below.
     </.error>
 
-    <fieldset class="fieldset mb-2">
-      <label>
-        <span class="label mb-1">Name</span>
-        <input
-          type="text"
-          name={form[:name].name}
-          id={form[:name].id}
-          value={form[:name].value}
-          class="w-full input"
-        />
-      </label>
-      <.error :for={error <- form[:name].errors}>{translate_error(error)}</.error>
-    </fieldset>
-
-    <fieldset class="fieldset mb-2">
-      <label>
-        <span class="label mb-1">Email</span>
-        <input
-          type="email"
-          name={form[:email].name}
-          id={form[:email].id}
-          value={form[:email].value}
-          class="w-full input"
-        />
-      </label>
-      <.error :for={error <- form[:email].errors}>{translate_error(error)}</.error>
-    </fieldset>
+    <.input field={form[:name]} type="text" label="Name" />
+    <.input field={form[:email]} type="email" label="Email" />
 
     <button type="submit" class="btn btn-primary">
       Save Contact
