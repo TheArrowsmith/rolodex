@@ -18,5 +18,7 @@ defmodule Rolodex.Contacts.Contact do
     contact
     |> cast(attrs, [:name, :email, :favorite, :notes, :title, :birthday])
     |> validate_required([:name])
+    |> validate_length(:name, max: 100)
+    |> validate_length(:email, max: 100)
   end
 end
