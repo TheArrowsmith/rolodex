@@ -22,7 +22,14 @@ defmodule RolodexWeb.ContactWizard do
           </div>
         </div>
 
-        <.form id="contact-form" for={@form} phx-change="validate" phx-submit="submit-step">
+        <.form
+          id="contact-form"
+          for={@form}
+          phx-change="validate"
+          phx-submit="submit-step"
+          phx-auto-recover="recover"
+        >
+          <input type="hidden" name="current_step" value={@step} />
           <div class="mb-4">
             <div class={@step == 1 || "hidden"}>
               <.input field={@form[:name]} label="Contact name" type="text" />
@@ -93,6 +100,21 @@ defmodule RolodexWeb.ContactWizard do
       end
 
     {:noreply, socket}
+  end
+
+  def handle_event("recover", params, socket) do
+    step =
+      case Integer.parse(params["current_step"]) do
+        {int, _} -> int
+        :error -> 1
+      end
+
+    form =
+      %Contact{}
+      |> Contacts.change_contact(params["contact"])
+      |> to_form()
+
+    {:noreply, socket |> assign(form: form, step: step)}
   end
 
   def handle_event("prev", _params, socket) do
