@@ -19,6 +19,8 @@ defmodule RolodexWeb.Router do
 
     get "/", ContactController, :index
 
+    live "/contacts/wizard", ContactWizard
+
     resources "/contacts", ContactController, except: [:index]
   end
 
